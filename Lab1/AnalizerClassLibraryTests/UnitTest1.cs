@@ -20,15 +20,13 @@ namespace AnalaizerClassLibraryTests
         {
             // Arrange
             string expected = Convert.ToString(TestContext.DataRow["expected"]);
-            AnalaizerClass.expression = Convert.ToString(TestContext.DataRow["initialized"]);
+            AnalaizerClass.expression = Convert.ToString(TestContext.DataRow["initial"]);
 
             // Actual
             string actual = AnalaizerClass.RunEstimate();
 
             // Assert
             Assert.AreEqual(expected, actual);
-
-
         }
     }
 }

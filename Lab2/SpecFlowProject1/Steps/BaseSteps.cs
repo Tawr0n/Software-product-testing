@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpecFlowProject1.Steps
 {
@@ -18,7 +13,7 @@ namespace SpecFlowProject1.Steps
         public static void BeforeFeature()
         {
             driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
         [AfterFeature]
         public static void AfterFeature()

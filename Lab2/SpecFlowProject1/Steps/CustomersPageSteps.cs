@@ -1,11 +1,5 @@
 ﻿using NUnit.Framework;
 using PageObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechTalk.SpecFlow;
 
 namespace SpecFlowProject1.Steps
 {
@@ -20,7 +14,6 @@ namespace SpecFlowProject1.Steps
         public void WhenClickOnTheDeleteButton()
         {
             customersPage = new CustomersPage(driver);
-            Thread.Sleep(1000);
             expectedCustomers = customersPage.GetCustomersList();
             expectedCustomers.RemoveAt(0);
             customersPage.ClickDeleteCustomer();
@@ -30,7 +23,9 @@ namespace SpecFlowProject1.Steps
         [Then(@"the result should be a list without one customer")]
         public void ThenTheResultShouldBeAListWithoutOneCustomer()
         {
-            Assert.AreEqual(actualCustomers, expectedCustomers);
+            actualCustomers.Sort();
+            expectedCustomers.Sort();
+            CollectionAssert.AreEqual(expectedCustomers, actualCustomers);
         }
 
     }
